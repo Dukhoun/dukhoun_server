@@ -40,7 +40,7 @@ router.post('/', async (req, res) => {
         quantity: 1
       }],
       mode: 'payment',
-      success_url: 'https://dukhoun-server-8.onrender.com/success',
+      success_url: 'https://dukhoun-server-9.onrender.com/success',
       cancel_url: 'https://yourdomain.com/cancel'
     });
     res.json({ message: 'تم استلام الطلب!', paymentUrl: session.url });
