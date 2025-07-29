@@ -2,11 +2,49 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dukhoun Server</title>
+  <title>طلب Dukhoun</title>
 </head>
 <body>
-  <h1>✅ خادم Dukhoun يعمل بنجاح</h1>
-  <p>يمكنك الآن استخدام نموذج الطلب عبر POST إلى <code>/order</code></p>
+  <h1>طلب جديد</h1>
+  <form id="orderForm">
+    <input type="text" id="name" placeholder="الاسم" required />
+    <input type="email" id="email" placeholder="البريد الإلكتروني" required />
+    <button type="submit">أرسل الطلب</button>
+  </form>
+
+  <div id="response"></div>
+
+  <script>
+    document.getElementById('orderForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+
+      const order = { name, email };
+
+      try {
+        const response = await fetch('https://dukhoun-server-6.onrender.com/order', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(order)
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          document.getElementById('response').innerHTML = `
+            ✅ تم إرسال الطلب!<br>
+            <a href="${data.paymentUrl}" target="_blank">اضغط هنا لإتمام الدفع</a>
+          `;
+        } else {
+          document.getElementById('response').innerText = `⚠️ فشل الطلب: ${data.error}`;
+        }
+      } catch (err) {
+        console.error(err);
+        document.getElementById('response').innerText = '🚫 حدث خطأ في الاتصال بالخادم';
+      }
+    });
+  </script>
 </body>
 </html>
