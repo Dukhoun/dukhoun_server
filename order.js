@@ -12,20 +12,23 @@ const transporter = nodemailer.createTransport({
 
 router.post('/', async (req, res) => {
   const order = req.body;
-  const orders = JSON.parse(fs.readFileSync('./orders.json'));
+  const dataPath = './orders.json';
+  const orders = fs.existsSync(dataPath)
+    ? JSON.parse(fs.readFileSync(dataPath))
+    : [];
+
   orders.push(order);
-  fs.writeFileSync('./orders.json', JSON.stringify(orders, null, 2));
+  fs.writeFileSync(dataPath, JSON.stringify(orders, null, 2));
 
   const mailOptions = {
     from: config.email.auth.user,
     to: order.email,
     subject: 'تأكيد طلبك من Dukhoun',
-    text: `شكرًا لطلبك! سيتم التواصل معك قريبًا.`
+    text: `شكرًا لطلبك! سنعاود التواصل معك قريبًا.`
   };
 
   try {
     await transporter.sendMail(mailOptions);
-
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       line_items: [{
@@ -40,7 +43,6 @@ router.post('/', async (req, res) => {
       success_url: 'https://yourdomain.com/success',
       cancel_url: 'https://yourdomain.com/cancel'
     });
-
     res.json({ message: 'تم استلام الطلب!', paymentUrl: session.url });
   } catch (err) {
     console.error(err);
