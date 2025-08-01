@@ -3,9 +3,15 @@ const router = express.Router();
 const nodemailer = require('nodemailer');
 const config = require('../config');
 
+// مسار POST لمعالجة إرسال الطلب
 router.post('/', (req, res) => {
   const { name, email, message } = req.body;
 
+  if (!name || !email || !message) {
+    return res.status(400).send('جميع الحقول مطلوبة');
+  }
+
+  // إعداد ناقل البريد الإلكتروني
   const transporter = nodemailer.createTransport({
     service: config.email.service,
     auth: {
@@ -14,20 +20,22 @@ router.post('/', (req, res) => {
     }
   });
 
+  // إعداد محتوى الرسالة
   const mailOptions = {
     from: config.email.auth.user,
     to: config.email.auth.user,
-    subject: 'طلب جديد من موقع Dukhoun',
-    text: `الاسم: ${name}\nالإيميل: ${email}\nالطلب:\n${message}`
+    subject: '📥 طلب جديد من موقع Dukhoun',
+    text: `🧾 تفاصيل الطلب:\n\n👤 الاسم: ${name}\n📧 الإيميل: ${email}\n📝 الطلب:\n${message}`
   };
 
+  // إرسال البريد
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
-      console.error(error);
-      res.status(500).send('حدث خطأ أثناء الإرسال');
+      console.error('❌ خطأ في إرسال الإيميل:', error);
+      return res.status(500).send('حدث خطأ أثناء الإرسال');
     } else {
-      console.log('Email sent: ' + info.response);
-      res.redirect('/success');
+      console.log('✅ تم إرسال البريد بنجاح:', info.response);
+      return res.redirect('/success');
     }
   });
 });
