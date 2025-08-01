@@ -1,0 +1,466 @@
+/*
+ * ملف أنماط CSS لموقع دخون.
+ * يعتمد هذا التصميم على سمة داكنة مع لمسات ذهبية فاخرة لإبراز الرقي.
+ */
+
+:root {
+  --primary-color: #d4af37;
+  --secondary-color: #a67929;
+  --bg-color: #0e0d0c;
+  --card-bg: #1a1a1a;
+  --text-color: #eaeaea;
+  --muted-color: #b0b0b0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Cairo', sans-serif;
+  direction: rtl;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* ---------- Header Styles ---------- */
+
+header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  background-color: rgba(14, 13, 12, 0.9);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+}
+
+header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+}
+
+.logo {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  /* Remove default text styling for logo image */
+  font-size: 1.7rem;
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+/* Style for the logo image */
+.logo-image {
+  height: 60px;
+  width: auto;
+  display: block;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+nav li {
+  margin-left: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: var(--primary-color);
+}
+
+/* ---------- Hero Section ---------- */
+
+#hero {
+  height: 100vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('assets/hero-dark.png');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--text-color);
+  padding: 0 20px;
+}
+
+.hero-content h2 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  color: var(--primary-color);
+}
+
+.hero-content p {
+  font-size: 1.25rem;
+  margin-bottom: 25px;
+  color: var(--muted-color);
+}
+
+/* Logo in hero section */
+.hero-logo {
+  max-width: 200px;
+  width: 40%;
+  height: auto;
+  margin: 0 auto 20px;
+  display: block;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 32px;
+  background-color: var(--primary-color);
+  color: #0e0d0c;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 700;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-2px);
+}
+
+.btn.small {
+  padding: 8px 20px;
+  font-size: 0.9rem;
+}
+
+/* ---------- Section Styles ---------- */
+
+section {
+  padding: 100px 0;
+}
+
+#about h2,
+#products h2,
+#contact h2 {
+  font-size: 2.2rem;
+  margin-bottom: 25px;
+  color: var(--primary-color);
+  text-align: center;
+}
+
+#about p {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  color: var(--muted-color);
+  line-height: 1.8;
+}
+
+/* ---------- Products Section ---------- */
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.product-card {
+  background-color: var(--card-bg);
+  border: 1px solid #2b2b2b;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+.product-image {
+  width: 100%;
+  height: 180px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.product-image::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  /* طبقة تغميق فوق صورة المنتج لدمجها مع المظهر الداكن */
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.product-content {
+  padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.product-content .icon {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.product-content h3 {
+  margin: 0 0 10px;
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+
+.product-content p {
+  flex-grow: 1;
+  margin: 0 0 15px;
+  font-size: 1rem;
+  color: var(--muted-color);
+  line-height: 1.6;
+}
+
+/* Label indicating that a product is coming soon
+ * This label is placed within the product heading to subtly
+ * communicate that the product is not yet available. It uses
+ * the secondary color and a smaller font size to differentiate
+ * it from the main product name. */
+.coming-soon {
+  font-size: 0.8rem;
+  color: var(--secondary-color);
+  margin-right: 5px;
+}
+
+/* Style adjustments for available product cards
+ * المنتجات المتاحة (مثل دهن العود) تُبرز عن طريق تغيير لون الحدود
+ * ولون العناصر داخل البطاقة لتتناسب مع اللون الأساسي الذهبي. يتم أيضاً
+ * تحديث زر الطلب ليتماشى مع هذا النمط. */
+.product-card.available {
+  border-color: var(--primary-color);
+}
+
+.product-card.available .product-content .icon,
+.product-card.available .product-content h3,
+.product-card.available .product-content p {
+  color: var(--primary-color);
+}
+
+.product-card.available .btn {
+  /* اجعل زر الطلب للمنتج المتاح باللون الذهبي الكامل لإبرازه */
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  color: var(--bg-color);
+}
+
+.product-card.available .btn:hover {
+  background-color: var(--primary-color);
+  color: var(--bg-color);
+}
+
+/*
+ * Style buttons for products that are not yet available (coming soon).
+ * نجعل أزرار الطلب للمنتجات القادمة بلون رمادي باهت لتقليل إبرازها مقارنة بالمنتج المتاح.
+ */
+.product-card:not(.available) .btn {
+  background-color: #2b2b2b;
+  border: 1px solid #3a3a3a;
+  color: var(--muted-color);
+}
+
+.product-card:not(.available) .btn:hover {
+  background-color: #3a3a3a;
+  color: var(--text-color);
+}
+
+/* ---------- Contact Section ---------- */
+
+#contact .contact-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.contact-info {
+  flex: 1;
+  min-width: 280px;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--muted-color);
+}
+
+.contact-info p {
+  margin: 0 0 10px;
+}
+
+#contact-form {
+  flex: 1;
+  min-width: 280px;
+}
+
+#contact-form .form-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+#contact-form label {
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+#contact-form input,
+#contact-form textarea {
+  padding: 10px;
+  border: 1px solid #2e2e2e;
+  border-radius: 4px;
+  background-color: #1f1f1f;
+  color: var(--text-color);
+  font-family: inherit;
+  resize: vertical;
+}
+
+#contact-form input:focus,
+#contact-form textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.3);
+}
+
+#contact-form button {
+  margin-top: 10px;
+}
+
+/* ---------- Footer ---------- */
+
+footer {
+  background-color: #070707;
+  color: var(--muted-color);
+  text-align: center;
+  padding: 20px 0;
+}
+
+/* ---------- Responsive Styles ---------- */
+
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav li {
+    margin: 10px 0 0 0;
+  }
+
+  header .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .logo {
+    margin-bottom: 10px;
+  }
+
+  .hero-content h2 {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  /* On small screens the header expands vertically when the menu items stack.
+   * Add extra top padding to the hero section so that the logo and heading
+   * remain visible below the header and navigation menu. Without this
+   * padding the hero logo may be covered by the open menu on mobile as
+   * reported by the user. */
+  #hero {
+    padding-top: 180px;
+  }
+
+  .products-grid {
+    gap: 20px;
+  }
+
+  section {
+    padding: 80px 0;
+  }
+}
+
+/* ---------- Order Modal Styles ---------- */
+/*
+ * يتم استخدام هذه الأنماط للصندوق المنبثق الذي يظهر عند النقر على زر "اطلب الآن".
+ * المظهر يتوافق مع السمة الداكنة واللمسات الذهبية للموقع، مع نص كبير
+ * للعنوان الرئيسي ونص أصغر للوصف.
+ */
+.order-modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.order-modal-content {
+  background-color: var(--card-bg);
+  border: 1px solid #2e2e2e;
+  padding: 40px 30px;
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.order-modal-content h3 {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+}
+
+.order-modal-content p {
+  font-size: 1.1rem;
+  color: var(--muted-color);
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.order-modal-content .btn {
+  margin-top: 20px;
+}
+
+/* إخفاء العناصر ذات الفئة hidden */
+.hidden {
+  display: none !important;
+}
