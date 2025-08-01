@@ -4,35 +4,35 @@ const fs = require('fs');
 const nodemailer = require('nodemailer');
 const path = require('path');
 
-const config = require('./config'); // يجب أن يحتوي على بريدك وكلمة المرور
+const config = require('./config');
 const stripe = require('stripe')(config.stripeSecret);
 const orderRoutes = require('./routes/order');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Middlewares
+// Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.use('/order', orderRoutes);
 
-// إرسال نموذج الطلب إلى بريدك
+// إرسال الطلب إلى البريد الإلكتروني
 app.post('/submit-order', async (req, res) => {
   const { name, email, message } = req.body;
 
   const transporter = nodemailer.createTransport({
-    service: 'gmail',
+    service: config.email.service,
     auth: {
-      user: config.emailUser,       // بريدك الشخصي
-      pass: config.emailPassword,   // كلمة مرور البريد (أو app password)
+      user: config.email.auth.user,
+      pass: config.email.auth.pass,
     },
   });
 
   const mailOptions = {
     from: email,
-    to: config.emailUser,
-    subject: 'طلب جديد من موقع دخون',
+    to: config.email.auth.user,
+    subject: '📦 طلب جديد من موقع دخون',
     text: `الاسم: ${name}\nالبريد: ${email}\nالطلب:\n${message}`,
   };
 
@@ -59,5 +59,5 @@ app.get('/', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`✅ Server running on port ${PORT}`);
 });
