@@ -3,7 +3,6 @@ const bodyParser = require('body-parser');
 const fs = require('fs');
 const nodemailer = require('nodemailer');
 const path = require('path');
-const path = require('path');
 // إضافة هذا المسار بعد تعريف Express
 app.get('/success', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'success.html'));
