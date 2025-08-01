@@ -1,31 +1,159 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>تم الطلب بنجاح | Dukhoun</title>
-  <style>
-    body {
-      background-color: #121212;
-      color: #f4f4f4;
-      font-family: 'Segoe UI', sans-serif;
-      text-align: center;
-      padding: 60px 20px;
-    }
-    h1 {
-      font-size: 2.5em;
-      margin-bottom: 20px;
-      color: #4CAF50;
-    }
-    p {
-      font-size: 1em;
-      color: #ccc;
-      margin-top: 20px;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dukhoun | دخون</title>
+  <!-- Fonts and styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <!-- Ionicons for icons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 <body>
-  <h1>✅ شكرًا لطلبك!</h1>
-  <p>دخون ليس عطرًا... بل أسلوب حياة</p>
+  <!-- Header with navigation -->
+  <header>
+    <div class="container">
+      <!-- Logo image instead of text -->
+      <h1 class="logo">
+        <!-- استخدم نفس شعار الصفحة الرئيسية للشعار الصغير في رأس الصفحة -->
+        <img src="assets/hero-logo.png" alt="Dukhoun logo" class="logo-image">
+      </h1>
+      <nav>
+        <ul>
+          <li><a href="#hero">الرئيسية</a></li>
+          <li><a href="#about">عن دخون</a></li>
+          <li><a href="#products">منتجاتنا</a></li>
+          <li><a href="#contact">اتصل بنا</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero section -->
+  <section id="hero">
+    <div class="hero-content">
+      <!-- Added large logo above the hero heading -->
+      <img src="assets/hero-logo.png" alt="Dukhoun logo" class="hero-logo">
+      <h2>اكتشف روائحنا الفاخرة</h2>
+      <p>عود، بخور، مسك – جودة تُلامس الحواس</p>
+      <a href="#products" class="btn">تسوق الآن</a>
+    </div>
+  </section>
+
+  <!-- About section -->
+  <section id="about">
+    <div class="container">
+      <h2>عن دخون</h2>
+      <p>تأسست دخون لتجلب لك أرقى العطور الشرقية. نحن نُعنى بتقديم أجود أنواع العود الطبيعي والبخور الفاخر والمسك النقي، ونختار منتجاتنا بعناية لضمان تجربة حسية لا تُنسى. يجمع فريقنا بين الخبرة التقليدية والرؤية الحديثة لنقدم لك روائح تعبّر عن الفخامة والرقي.</p>
+    </div>
+  </section>
+
+  <!-- Products section -->
+  <section id="products">
+    <div class="container">
+      <h2>منتجاتنا</h2>
+      <div class="products-grid">
+        <!-- Dahn Al Oud product -->
+<div class="product-card available">
+  <div class="product-image" style="background-image: url('assets/dahn_oud.jpg');"></div>
+  <div class="product-content">
+    <div class="icon"><ion-icon name="flask-outline"></ion-icon></div>
+    <h3>دهن العود</h3>
+    <p>دهن العود تولة مميزة تعكس جوهر العود المركز بأبهى صورة.</p>
+    <a href="https://dukhoun-server-10.onrender.com/success" class="btn small">اطلب الآن</a>
+  </div>
+</div>
+
+        <!-- باقي المنتجات بدون تعديل -->
+        <div class="product-card">
+          <div class="product-image" style="background-image: url('assets/oud_wood.png');"></div>
+          <div class="product-content">
+            <div class="icon"><ion-icon name="leaf-outline"></ion-icon></div>
+            <h3>عود <span class="coming-soon">قريباً</span></h3>
+            <p>قطع من العود الطبيعي المختار بعناية ليمنحك عبقاً ثرياً ودافئاً يدوم طويلاً.</p>
+            <button type="button" class="btn small order-now-btn">اطلب الآن</button>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-image" style="background-image: url('assets/bakhoor_new.jpg');"></div>
+          <div class="product-content">
+            <div class="icon"><ion-icon name="flame-outline"></ion-icon></div>
+            <h3>بخور <span class="coming-soon">قريباً</span></h3>
+            <p>بخور فاخر ينبعث منه دخان عطري ناعم يملأ الأجواء بالسكينة والصفاء.</p>
+            <button type="button" class="btn small order-now-btn">اطلب الآن</button>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-image" style="background-image: url('assets/musk_new.png');"></div>
+          <div class="product-content">
+            <div class="icon"><ion-icon name="droplet-outline"></ion-icon></div>
+            <h3>مسك <span class="coming-soon">قريباً</span></h3>
+            <p>مسك أصيل بنفحات عميقة ورقيقة يضفي لمسة من الرقي على حضورك.</p>
+            <button type="button" class="btn small order-now-btn">اطلب الآن</button>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-image" style="background-image: url('assets/candle_new.jpg');"></div>
+          <div class="product-content">
+            <div class="icon"><ion-icon name="flame"></ion-icon></div>
+            <h3>شمع <span class="coming-soon">قريباً</span></h3>
+            <p>شموع معطرة فاخرة تضفي دفئاً وأجواء مميزة على مناسباتك وحياتك اليومية.</p>
+            <button type="button" class="btn small order-now-btn">اطلب الآن</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact section -->
+  <section id="contact">
+    <div class="container">
+      <h2>اتصل بنا</h2>
+      <div class="contact-wrapper">
+        <div class="contact-info">
+          <p><strong>العنوان:</strong> عمان _الاردن</p>
+          <p><strong>الهاتف:</strong> 0787240405</p>
+        </div>
+        <form id="contact-form">
+          <div class="form-group">
+            <label for="name">الاسم</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">البريد الإلكتروني</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="message">رسالتك</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+          </div>
+          <button type="submit" class="btn">إرسال</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p id="copyright"></p>
+    </div>
+  </footer>
+
+  <!-- Order message modal -->
+  <div id="order-modal" class="order-modal hidden">
+    <div class="order-modal-content">
+      <h3>🚚 قريبا سيتم طرح المنتجات</h3>
+      <p>نحن في المراحل الأخيرة من تجهيز منتجاتنا بعناية فائقة — لنقدم لكم تجربة عود ومسك وبخور لا تُنسى.</p>
+      <p>✨ ترقبوا الإطلاق القريب بإذن الله.</p>
+      <button id="close-order-modal" class="btn small">إغلاق</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
