@@ -31,7 +31,7 @@ router.post('/', (req, res) => {
   // إرسال البريد
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
-      console.error('❌ خطأ في إرسال الإيميل:', error.message, error);
+     console.error("Email error:", error);
       return res.status(500).send('حدث خطأ أثناء الإرسال');
     } else {
       console.log('✅ تم إرسال البريد بنجاح:', info.response);
