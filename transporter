@@ -1,0 +1,5 @@
+transporter.verify().then(() => {
+  console.log('SMTP is ready ✅:', config.email.host, config.email.auth.user);
+}).catch(err => {
+  console.error('SMTP verify failed ❌:', err);
+});
