@@ -7,7 +7,9 @@ router.post('/', (req, res) => {
   const { name, email, message } = req.body;
 
   const transporter = nodemailer.createTransport({
-    service: config.email.service,
+    host: config.email.host,
+    port: config.email.port,
+    secure: config.email.secure,
     auth: {
       user: config.email.auth.user,
       pass: config.email.auth.pass
@@ -16,9 +18,9 @@ router.post('/', (req, res) => {
 
   const mailOptions = {
     from: config.email.auth.user,
-    to: config.email.auth.user,
-    subject: 'طلب جديد من موقع Dukhoun',
-    text: `الاسم: ${name}\nالإيميل: ${email}\nالطلب:\n${message}`
+    to: config.mailTo,
+    subject: `طلب جديد من موقع Dukhoun`,
+    text: `الاسم: ${name}\nالإيميل: ${email}\nالرسالة:\n${message}`
   };
 
   transporter.sendMail(mailOptions, (error, info) => {
@@ -27,7 +29,7 @@ router.post('/', (req, res) => {
       res.status(500).send('حدث خطأ أثناء الإرسال');
     } else {
       console.log('Email sent: ' + info.response);
-      res.redirect('/success');
+      res.redirect('https://dukhoun-server-10.onrender.com/success');
     }
   });
 });
