@@ -1,9 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const fs = require('fs');
-const nodemailer = require('nodemailer');
 const path = require('path');
-
 const config = require('./config');
 const stripe = require('stripe')(config.stripeSecret);
 const orderRoutes = require('./routes/order');
@@ -15,16 +12,19 @@ const PORT = process.env.PORT || 5000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
+
+// Routes
 app.use('/order', orderRoutes);
 
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 
-// // إرسال الطلب إلى البريد الإلكتروني
-const transporter = nodemailer.createTransport({
-  host: config.email.host,
-  port: config.email.port,
-  secure: config.email.secure,
-  auth: {
-    user: config.email.auth.user,
-    pass: config.email.auth.pass,
-  },
+// Success page
+app.get('/success', (req, res) => {
+  res.sendFile(path.join(__dirname, 'success.html'));
+});
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
